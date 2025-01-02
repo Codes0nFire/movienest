@@ -1,13 +1,19 @@
 import React, { useRef, useState } from "react";
 import { isValid } from "../utils/validate";
-import {  createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import {  createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login = () => {
 
  const [isLogin, setisLogin] = useState(true)
  const [errorMessage, seterrorMessage] = useState(null)
  const email=useRef();
  const password=useRef();
+ const name=useRef();
+ const navigate=useNavigate();
+ const dispatch=useDispatch();
 
  const handleClick=()=>{
     const currMessage=isValid(email.current.value,password.current.value)
@@ -24,7 +30,24 @@ const Login = () => {
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    console.log("This is signup user :",user)
+    
+    // Update the user
+
+updateProfile(auth.currentUser, {
+  displayName: name.current.value, photoURL: "https://t3.ftcdn.net/jpg/06/28/49/84/360_F_628498402_LIIyNOYvFGuEsdHxEf9bO4ZbnWpgFyfp.jpg"
+}).then(() => {
+  // Profile updated!
+  const{uid,displayName,email,photoURL}=auth.currentUser
+  dispatch(addUser({uid,email,displayName,photoURL}));
+  console.log("Succesfully signUp")
+  navigate("/browse");
+
+}).catch((error) => {
+  // An error occurred
+  // ...
+});
+     
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -38,11 +61,13 @@ const Login = () => {
     else{
       // signIn
 
-      signInWithEmailAndPassword(auth,email.current.value, password.current.value)
+  signInWithEmailAndPassword(auth,email.current.value, password.current.value)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log("This is loggedIn user",user)
+    console.log("Sign In complete")
+    navigate("/browse")
+    
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -74,6 +99,7 @@ const Login = () => {
               Full Name
             </label>
             <input
+              ref={name}
               type="text"
               id="fullName"
               className="w-full p-4 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
