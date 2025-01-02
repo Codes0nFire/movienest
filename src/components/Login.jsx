@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { isValid } from "../utils/validate";
-
+import {  createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../utils/firebase";
 const Login = () => {
 
  const [isLogin, setisLogin] = useState(true)
@@ -9,7 +10,49 @@ const Login = () => {
  const password=useRef();
 
  const handleClick=()=>{
-    seterrorMessage(isValid(email.current.value,password.current.value));
+    const currMessage=isValid(email.current.value,password.current.value)
+    seterrorMessage(currMessage);
+
+    if(currMessage)return;
+
+    // if the currMessge is null it means that the user can signUp or SignIn
+
+    if(!isLogin){
+        //  signUp
+
+  createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log("This is signup user :",user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrorMessage(errorMessage)
+  });
+
+
+
+    }
+    else{
+      // signIn
+
+      signInWithEmailAndPassword(auth,email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log("This is loggedIn user",user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrorMessage("emailId or password is wrong ")
+  });
+
+
+
+    }
     
  }
 
