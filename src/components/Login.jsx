@@ -5,6 +5,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import Header from "./Header";
 const Login = () => {
 
  const [isLogin, setisLogin] = useState(true)
@@ -14,6 +15,8 @@ const Login = () => {
  const name=useRef();
  const navigate=useNavigate();
  const dispatch=useDispatch();
+ 
+ 
 
  const handleClick=()=>{
     const currMessage=isValid(email.current.value,password.current.value)
@@ -39,8 +42,8 @@ updateProfile(auth.currentUser, {
   // Profile updated!
   const{uid,displayName,email,photoURL}=auth.currentUser
   dispatch(addUser({uid,email,displayName,photoURL}));
-  console.log("Succesfully signUp")
-  navigate("/browse");
+  // console.log("Succesfully signUp")
+  // navigate("/browse");
 
 }).catch((error) => {
   // An error occurred
@@ -65,8 +68,8 @@ updateProfile(auth.currentUser, {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log("Sign In complete")
-    navigate("/browse")
+    // console.log("Sign In complete")
+    // navigate("/browse")
     
   })
   .catch((error) => {
@@ -89,7 +92,9 @@ updateProfile(auth.currentUser, {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 to-blue-600">
+   <>
+   {<Header/>}
+   <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 to-blue-600">
       <div className="w-full max-w-md p-10 bg-white rounded-lg shadow-lg">
         <h1 className="text-4xl font-semibold text-center text-blue-800 mb-8">{isLogin ? "SignIn" : "SignUp"}</h1>
         <form onSubmit={(e)=>e.preventDefault()} >
@@ -144,6 +149,7 @@ updateProfile(auth.currentUser, {
           </p>
       </div>
     </div>
+   </>
   );
 };
 
