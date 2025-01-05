@@ -51,7 +51,8 @@ const currentUser=useSelector(store=>store.user)
     <header className="absolute top-0 w-full p-5 flex justify-between items-center z-10">
     <img
       className="h-12"
-      src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+      // src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+      src=''
       alt="Some Logo"
     />
     <button

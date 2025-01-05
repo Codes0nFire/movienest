@@ -3,13 +3,26 @@ import Header from './Header';
 import useNowPlayingMovies from '../hooks/useNowPlaying';
 import MainContent from './MainContent';
 import SecondaryContent from './SecondaryContent';
+import { useSelector } from 'react-redux';
 
 
 const Browse = () => {
   
-
-// get nowPlaying Movies data and save into store
+  // get nowPlaying Movies data and save into store
  useNowPlayingMovies();
+
+  const movies=useSelector(store=>store.movies?.nowPlayingMovies)
+
+  if(!movies)return ;
+ 
+  const idx=Math.floor(Math.random()*movies.length)
+  
+  const {id,
+     original_title,
+     overview,
+  }=movies[idx]
+
+
 
 
   return (
@@ -17,7 +30,7 @@ const Browse = () => {
       {/* Header */}
         <Header/>
       {/* Main */}
-        <MainContent/>
+        <MainContent data={{id,original_title,overview}}/>
       {/* Secondary */}
         <SecondaryContent/>
     
