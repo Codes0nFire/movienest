@@ -15,9 +15,17 @@ usetrailer(id)
   
 
   return (
-    <div className="relative w-full h-[80vh]">
+    <div className="relative w-full aspect-video">
 
-<iframe className='object-cover w-full h-full' src={`https://www.youtube.com/embed/${settrailerKey}?si=14WTEuJgyeIFWbSs1`} title="YouTube video player"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+<iframe
+  className="object-cover w-full h-full bg-gradient-to-r from-black"
+  src={`https://www.youtube.com/embed/${settrailerKey}?autoplay=0&mute=1&loop=1&si=14WTEuJgyeIFWbSs1`} 
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerPolicy="strict-origin-when-cross-origin"
+  allowFullScreen
+></iframe>
+
 
         
         {/* <video
@@ -27,14 +35,16 @@ usetrailer(id)
           muted
           src="https://www.w3schools.com/html/mov_bbb.mp4"
         /> */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+       <div className='absolute w-full aspect-video bg-gradient-to-r from-black top-0' >
+       <div className=" relative top-1/2 left-[0%]  text-center w-[30%] px-20  ">
           <h1 className="text-5xl font-bold mb-4">{original_title}</h1>
-          <p className="text-lg mb-6 ">{overview}</p>
+          <p className="text-lg mb-6  text-center ">{overview.slice(0,100)}</p>
           <div className="flex justify-center space-x-4">
             <button className="bg-blue-600 py-2 px-6 rounded-lg text-white font-semibold">Play</button>
             <button className="bg-gray-700 py-2 px-6 rounded-lg text-white font-semibold">Watch Trailer</button>
           </div>
         </div>
+       </div>
       </div>
   )
 }

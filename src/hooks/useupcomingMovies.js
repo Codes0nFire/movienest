@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
-import { addNowPlayingMovies } from "../utils/moviesSlice";
+import { addNowPlayingMovies, addpopularMovies, addtopRatedMovies, addupcomingMovies } from "../utils/moviesSlice";
 import { options } from "../utils/constant";
 import { useEffect } from "react";
 
-const NowPlayingMovies = () => {
+const useupcomingMovies = () => {
   const dispatch = useDispatch();
 
   const nowPlaying = async () => {
-    let blob = await fetch(import.meta.env.VITE_NOWPLAYINGMOVIES_API, options);
+    let blob = await fetch(import.meta.env.VITE_UPCOMINGMOVIES_API, options);
     let data = await blob.json();
     // console.log(data.results)
-    dispatch(addNowPlayingMovies(data.results));
+    dispatch(addupcomingMovies(data.results));
   };
 
   useEffect(() => {
@@ -18,4 +18,4 @@ const NowPlayingMovies = () => {
   }, []);
 };
 
-export default NowPlayingMovies;
+export default useupcomingMovies;

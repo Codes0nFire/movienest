@@ -13,6 +13,7 @@ const usetrailer=(id)=>{
        const getTrailer=async ()=>{
          // call getTariler api
          const blob=await fetch(`https://api.themoviedb.org/3/movie/${id}/videos`,options)
+         
          const data=await blob.json();
          const trailerkey=data.results.filter(v=>v.type=="Trailer")[0].key
          
