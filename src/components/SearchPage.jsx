@@ -1,0 +1,11 @@
+import React from 'react'
+
+const SearchPage = () => {
+  return (
+    <div  >
+      <h1>This is our Srach Page </h1>
+    </div>
+  )
+}
+
+export default SearchPage

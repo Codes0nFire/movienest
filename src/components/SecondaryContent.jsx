@@ -13,10 +13,10 @@ const SecondaryContent = () => {
   return (
     <div className="pt-10 px-5 ">
    
-    <VideoList movies={movies.nowPlayingMovies} />
-    <VideoList movies={movies.topRatedMovies} />
-    <VideoList movies={movies.upcomingMovies} />
-    <VideoList movies={movies.popularMovies} />
+    <VideoList title="Trending" movies={movies.nowPlayingMovies} />
+    <VideoList title="TopRated" movies={movies.topRatedMovies} />
+    <VideoList title="Upcoming" movies={movies.upcomingMovies} />
+    <VideoList title="Popular" movies={movies.popularMovies} />
   
   </div>
   )

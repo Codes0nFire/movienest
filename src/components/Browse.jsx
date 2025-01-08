@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import usepopularMovies from '../hooks/usepopularMovies';
 import usetopRatedMovies from '../hooks/usetopRatedMovies';
 import useupcomingMovies from '../hooks/useupcomingMovies';
+import SearchPage from './searchPage';
 
 
 const Browse = () => {
@@ -18,6 +19,8 @@ const Browse = () => {
  useupcomingMovies();
 
   const movies=useSelector(store=>store.movies?.nowPlayingMovies)
+  const search=useSelector(store=>store.search?.isSearchPage)
+ 
 
   if(!movies)return ;
  
@@ -28,17 +31,16 @@ const Browse = () => {
      overview,
   }=movies[idx]
 
-
+  
 
 
   return (
     <div className="min-h-screen bg-gradient-to-b  bg-black text-white ">
       {/* Header */}
         <Header/>
-      {/* Main */}
-        <MainContent data={{id,original_title,overview}}/>
-      {/* Secondary */}
-        <SecondaryContent/>
+      {search ? <SearchPage/> : <>  <MainContent data={{id,original_title,overview}}/> 
+      <SecondaryContent/>    </> }
+        
     
     </div>
   );
