@@ -2,12 +2,15 @@ import React from "react";
 import { Image_URL } from "../utils/constant";
 
 const VideoCard = ({ movie, index }) => {
+ 
+  if(!movie || !movie.poster_path)return null;
+
   return (
     <div
       key={index}
       className="flex-shrink-0 w-60 h-72 relative"
     >
-      {/* Red overlay div */}
+     
      
 
       {/* Blue main card */}
@@ -18,7 +21,7 @@ const VideoCard = ({ movie, index }) => {
           alt={movie.title}
           className="object-cover w-full h-full rounded-md"
         />
-        <div className="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black via-transparent to-transparent">
+        <div className="absolute bottom-0 left-0 w-full  p-2 bg-gradient-to-t from-black via-black to-transparent">
           <p className="text-white font-semibold">{movie.title}</p>
         </div>
       </div>

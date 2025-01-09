@@ -22,7 +22,7 @@ import VideoCard from './VideoCard';
 const VideoList = ({movies,title}) => {
 
 
-  return (
+  return  (
     <div className='pb-10'> 
       <h2 className="text-3xl font-semibold mb-4">{title}</h2>
       <div className="flex  space-x-4 overflow-x-scroll scrollbar-hide">

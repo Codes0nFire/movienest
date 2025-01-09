@@ -8,6 +8,7 @@ import { toggleSearch } from "../utils/searchSlice";
 
 
 const Header = () => {
+  const isSearchPage=useSelector(store=>store.search.isSearchPage)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSelector((store) => store.user);
@@ -59,7 +60,7 @@ const Header = () => {
       />
 
       <button onClick={handleSearch} className="text-white bg-red-700 px-4 py-2 rounded-md">
-        Search
+       {isSearchPage ? "Home" : "Search"}
       </button>
 
       <button
