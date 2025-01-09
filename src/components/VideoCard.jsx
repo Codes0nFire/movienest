@@ -2,27 +2,32 @@ import React from "react";
 import { Image_URL } from "../utils/constant";
 
 const VideoCard = ({ movie, index }) => {
+  if (!movie || !movie.poster_path) return null;
+
  
-  if(!movie || !movie.poster_path)return null;
 
   return (
     <div
       key={index}
-      className="flex-shrink-0 w-60 h-72 relative"
+      className="flex-shrink-0 w-60 h-80 relative group transition-transform duration-300 hover:scale-95"
     >
-     
-     
-
-      {/* Blue main card */}
-      <div className="bg-blue-600 cursor-pointer w-full h-full transition-transform duration-300 hover:scale-90 hover:cursor-pointer">
-        {/* Uncomment to show movie poster */}
+      {/* Card Container */}
+      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        {/* Movie Poster */}
         <img
           src={Image_URL + movie.poster_path}
           alt={movie.title}
-          className="object-cover w-full h-full rounded-md"
+          className="object-cover w-full h-full"
         />
-        <div className="absolute bottom-0 left-0 w-full  p-2 bg-gradient-to-t from-black via-black to-transparent">
-          <p className="text-white font-semibold">{movie.title}</p>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300"></div>
+        {/* Movie Details */}
+        <div className="absolute bottom-0 left-0 w-full p-4 text-white bg-gradient-to-t from-black via-transparent to-transparent">
+          <p className="text-lg font-semibold truncate">{movie.title}</p>
+        </div>
+        {/* Floating Icon */}
+        <div className="absolute top-2 right-2 bg-white text-black text-sm font-semibold px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+          ★ {movie.vote_average.toFixed(1) || "N/A"}
         </div>
       </div>
     </div>

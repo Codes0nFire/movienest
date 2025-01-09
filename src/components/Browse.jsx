@@ -11,7 +11,7 @@ import SearchPage from './searchPage';
 
 
 const Browse = () => {
-  
+  const darkmode=useSelector(store=>store.theme.darkmode)
   // get nowPlaying Movies data and save into store
  useNowPlayingMovies();
  usepopularMovies();
@@ -35,7 +35,7 @@ const Browse = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b  bg-black text-white ">
+    <div className={`min-h-screen bg-gradient-to-b ${darkmode ? "bg-black text-white": "bg-white text-black"}  `}>
       {/* Header */}
         <Header/>
       {search ? <SearchPage/> : <>  <MainContent data={{id,original_title,overview}}/> 

@@ -7,7 +7,7 @@ import { addSearchMovies } from '../utils/searchSlice';
 import SearchResults from './SearchResults';
 
 const SearchPage = () => {
- 
+ const darkmode=useSelector(store=>store.theme.darkmode)
  let inputRef=useRef();
  const dispatch=useDispatch();
 
@@ -46,13 +46,14 @@ const SearchPage = () => {
 
 
   return (
- <div className='bg-black pt-[10%] text-white h-screen w-full'>
-<div className='flex justify-center' >
-<form onSubmit={(e)=>e.preventDefault()} >
+ <div className={` pt-[10%]  h-screen w-full ${darkmode ? "bg-black text-white" : "bg-white text-black"}`}>
+<div className='flex justify-center ' >
+<form className='flex gap-2' onSubmit={(e)=>e.preventDefault()} >
     <input type="text" placeholder='what kind of movies would you love to watch? ' 
     ref={inputRef}
-    className='w-[20vw] py-2 px-2 outline-none text-black' />
-    <button className='p-2 bg-blue-600 text-white'
+    className={`w-[20vw] py-2 px-2  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
+    <button 
+      className={`py-2 px-4  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
     onClick={onClickHandler}
      >Search </button>
 </form>

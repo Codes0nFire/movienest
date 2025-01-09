@@ -5,10 +5,12 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleSearch } from "../utils/searchSlice";
+import { switchdarkmode } from "../utils/themeSlice";
 
 
 const Header = () => {
-  const isSearchPage=useSelector(store=>store.search.isSearchPage)
+  const isSearchPage=useSelector(store=>store.search.isSearchPage);
+  const darkmode=useSelector(store=>store.theme.darkmode);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSelector((store) => store.user);
@@ -32,6 +34,10 @@ const Header = () => {
       });
   };
 
+  const themeChanger=()=>{
+    dispatch(switchdarkmode())
+  }
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -52,22 +58,29 @@ const Header = () => {
 
   return currentUser ? (
     <header className="absolute top-0 w-full p-5 flex justify-between items-center z-10">
-      <img
+      {/* <img
         className="h-12"
         // src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
         src=""
         alt="Some Logo"
-      />
+      /> */}
 
-      <button onClick={handleSearch} className="text-white bg-red-700 px-4 py-2 rounded-md">
+      <button onClick={handleSearch} className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}>
        {isSearchPage ? "Home" : "Search"}
       </button>
 
       <button
         onClick={onClickHandler}
-        className="text-white bg-blue-700 px-4 py-2 rounded-lg"
+        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}
       >
         Sign Out
+      </button>
+
+      <button
+        onClick={themeChanger}
+        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}
+      >
+       {darkmode ? "Light Mode ☀️" :"Dark Mode 🌛" }
       </button>
     </header>
   ) : (
