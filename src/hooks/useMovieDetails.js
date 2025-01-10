@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addmovieDetail } from "../utils/moviesSlice";
+import { addmovieDetail, removemovieDetail } from "../utils/moviesSlice";
 import { useEffect } from "react";
 import { options } from "../utils/constant";
 
@@ -17,7 +17,11 @@ const useMovieDetails=(id)=>{
         const data=await blob.json()
         
         // save the data in store
-        
+        dispatch(removemovieDetail());
+
+        //    pause
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         dispatch(addmovieDetail(data));
 
         

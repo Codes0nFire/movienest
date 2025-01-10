@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { options } from "../utils/constant";
 import { addmovieImages } from "../utils/moviesSlice";
 import useMovieImages from "../hooks/useMovieImages";
+import ShimmerUI from "./ShimmerUi";
+import ShimmerUIList from "./ShimmerUIList";
 
 
 const Details = () => {
@@ -29,7 +31,11 @@ useMovieDetails(id)
 // fetch posters images
 useMovieImages(id)
 
-// /movie/{movie_id}/images
+ // Render shimmer if data is not loaded
+ if (!movie || !posters ) {
+    return <ShimmerUI/>;
+  }
+
   return movie && (
    <div>
   
