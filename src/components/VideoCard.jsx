@@ -1,5 +1,6 @@
 import React from "react";
 import { Image_URL } from "../utils/constant";
+import { Link } from "react-router";
 
 const VideoCard = ({ movie, index }) => {
   if (!movie || !movie.poster_path) return null;
@@ -7,12 +8,15 @@ const VideoCard = ({ movie, index }) => {
  
 
   return (
-    <div
+   <Link to={`/details/${movie.id}`} >
+   
+
+   <div
       key={index}
       className="flex-shrink-0 w-60 h-80 relative group transition-transform duration-300 hover:scale-95"
     >
       {/* Card Container */}
-      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg hover:cursor-pointer transition-shadow duration-300">
         {/* Movie Poster */}
         <img
           src={Image_URL + movie.poster_path}
@@ -31,6 +35,10 @@ const VideoCard = ({ movie, index }) => {
         </div>
       </div>
     </div>
+
+
+   
+   </Link>
   );
 };
 
