@@ -20,7 +20,7 @@ const useMovieDetails=(id)=>{
         dispatch(removemovieDetail());
 
         //    pause
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
 
         dispatch(addmovieDetail(data));
 

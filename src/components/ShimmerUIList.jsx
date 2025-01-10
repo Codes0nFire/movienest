@@ -12,7 +12,7 @@ const ShimmerUIList = () => {
                   className=" bg-gray-600 rounded animate-pulse flex-shrink-0 w-60 h-80 relative group transition-transform duration-300 hover:scale-95"
                 >
                   {/* Card Container */}
-                  <div className=" bg-gray-600 rounded animate-pulse relative w-full h-full rounded-lg overflow-hidden shadow-lg hover:cursor-pointer transition-shadow duration-300">
+                  <div className=" bg-gray-600 rounded animate-pulse relative w-full h-full  overflow-hidden shadow-lg hover:cursor-pointer transition-shadow duration-300">
                     {/* Movie Poster */}
                     <div
                       

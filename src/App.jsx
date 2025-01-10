@@ -2,8 +2,8 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Login from './components/Login'
 import Browse from './components/Browse'
-import Header from './components/Header'
 import Details from './components/Details'
+import Trailer from './components/Trailer'
 
 
 function App() {
@@ -15,7 +15,8 @@ function App() {
                
                <Route path='/' element={<Login/>} />
                <Route path='/browse' element={<Browse/>} /> 
-               <Route path='/details/:id' element={<Details/>} /> 
+               <Route path='/details/:id' element={<Details/>} />
+               <Route path='/trailer/:id' element={<Trailer/>} /> 
              </Routes>
         </BrowserRouter>
    

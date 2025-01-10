@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FaStar, FaClock, FaCalendarAlt } from "react-icons/fa";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import useMovieDetails from "../hooks/useMovieDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { options } from "../utils/constant";
@@ -107,12 +107,12 @@ useMovieImages(id)
       >
        Go Back
       </button>
-      <button
-       
+      <Link
+       to={`/trailer/${id}`}
         className={` bg-white text-black   px-4 py-2 `}
       >
        Watch Trailer
-      </button>
+      </Link>
         </div>
       </div>
     </div>
