@@ -10,7 +10,9 @@ const MainContent = ({data}) => {
 
 const{id,original_title,overview}=data
   
-usetrailer(id)
+
+  usetrailer(id);
+
   
   
 
@@ -28,21 +30,12 @@ usetrailer(id)
 
 
         
-        {/* <video
-          className="object-cover w-full h-full"
-          autoPlay
-          loop
-          muted
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
-        /> */}
+ 
        <div className='absolute w-full aspect-video bg-gradient-to-r from-black top-0' >
        <div className=" relative top-1/2 left-[0%]  text-center w-[30%] px-20  ">
-          <h1 className="text-5xl font-bold mb-4 text-white ">{original_title}</h1>
-          <p className="text-lg mb-6  text-center text-white ">{overview.slice(0,100)}</p>
-          <div className="flex justify-center space-x-4">
-            <button className="bg-black py-2 px-6 rounded-lg text-white font-semibold">Play</button>
-            <button className="bg-black py-2 px-6 rounded-lg text-white font-semibold">Watch Trailer</button>
-          </div>
+          <h1 className="text-5xl font-bold mb-4 text-left text-white ">{original_title}</h1>
+          <p className="text-sm text-left mb-6   text-white ">{overview}</p>
+      
         </div>
        </div>
       </div>

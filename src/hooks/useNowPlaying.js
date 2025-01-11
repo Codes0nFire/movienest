@@ -4,7 +4,7 @@ import { options } from "../utils/constant";
 import { useEffect } from "react";
 
 const NowPlayingMovies = () => {
-  const nowPlayingMovies=useSelector(store=>store.movies.nowPlayingMovies)
+  const nowPlayingMovies=useSelector(store=>store.movies?.nowPlayingMovies)
   const dispatch = useDispatch();
 
   const nowPlaying = async () => {

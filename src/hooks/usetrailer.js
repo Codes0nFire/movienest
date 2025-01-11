@@ -9,6 +9,8 @@ import { options } from "../utils/constant";
 
 const usetrailer=(id)=>{
     const dispatch=useDispatch();
+    const trailerkey=useSelector(store=>store.movies?.trailerKey)
+    
      // fetch trailer  set key into store as trailerkey
        const getTrailer=async ()=>{
          // call getTariler api
@@ -20,7 +22,7 @@ const usetrailer=(id)=>{
          dispatch(addtrailerKey(trailerkey));
        }
      
-       useEffect(()=>{getTrailer()},[id])
+       useEffect(()=>{!trailerkey && getTrailer()},[id])
      
        
 

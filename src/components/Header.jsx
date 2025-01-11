@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { toggleSearch } from "../utils/searchSlice";
 import { switchdarkmode } from "../utils/themeSlice";
+import { FaMoon, FaSearch, FaSun } from "react-icons/fa";
 
 
 const Header = () => {
   const isSearchPage=useSelector(store=>store.search.isSearchPage);
+  const username=useSelector(store=>store.user?.displayName)
   const darkmode=useSelector(store=>store.theme.darkmode);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,22 +67,33 @@ const Header = () => {
         alt="Some Logo"
       /> */}
 
-      <button onClick={handleSearch} className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}>
-       {isSearchPage ? "Home" : "Search"}
+      
+<div className="flex gap-2 text-white">
+        <p>Hello✌️</p>
+        <p>{username}</p>
+      </div>
+
+      <button onClick={handleSearch} className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"} flex justify-center items-center gap-1  
+      rounded-md px-4 py-2 text-sm `}>
+       {isSearchPage ? "Home" : "Search" }
+       {!isSearchPage && <FaSearch  size={15} />}
       </button>
 
+      
       <button
         onClick={onClickHandler}
-        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}
+        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"} rounded-md  px-4 py-2 text-sm `}
       >
         Sign Out
       </button>
 
       <button
         onClick={themeChanger}
-        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"}   px-4 py-2 `}
+        className={` ${darkmode ? "bg-white text-black" :"text-white bg-black"} 
+        flex justify-center items-center gap-1 rounded-md  px-4 py-2 text-sm `}
       >
-       {darkmode ? "Light Mode ☀️" :"Dark Mode 🌛" }
+       {darkmode ? "Light Mode" :"Dark Mode " }
+       {darkmode ?  <FaSun className="text-yellow-400" size={20} /> :<FaMoon  size={20} />}
       </button>
     </header>
   ) : (
