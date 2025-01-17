@@ -47,11 +47,14 @@ const SearchPage = () => {
 
   return (
  <div className={` pt-[10%]  h-screen w-full ${darkmode ? "bg-black text-white" : "bg-white text-black"}`}>
-<div className='flex justify-center ' >
+<div className='flex justify-center gap-2' >
+   <img 
+    className='w-12 h-12 rounded-full'
+    src="https://i.pinimg.com/736x/4e/77/a8/4e77a8c2b74b4ced590341f6ee62f9e5.jpg" alt="" />
 <form className='flex gap-2' onSubmit={(e)=>e.preventDefault()} >
     <input type="text" placeholder='what kind of movies would you love to watch? ' 
     ref={inputRef}
-    className={`w-[40vw] py-2 px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
+    className={`w-[40vw]  px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
     <button 
       className={`py-2 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
     onClick={onClickHandler}

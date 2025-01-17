@@ -12,7 +12,7 @@ const searchMovies=useSelector(store=>store.search.searchMovies)
 
   return (
     <div className='text-white p-10' >
-    {searchMovies && <VideoList movies={searchMovies} title={"Related Movies"}  />}
+    {searchMovies && <VideoList movies={searchMovies} title={"Recommended Movies"}  />}
     </div>
   )
 }
