@@ -68,8 +68,8 @@ const Header = () => {
       /> */}
 
       
-<div className="flex gap-2 text-white">
-        <p>Hello✌️</p>
+<div className={`flex gap-2 px-2 py-1 rounded-md ${darkmode ? " text-white" :"text-black bg-white"}`}>
+        <p>Hello{darkmode ? "👋" : "✌️"}</p>
         <p>{username}</p>
       </div>
 

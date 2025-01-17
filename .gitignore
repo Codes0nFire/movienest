@@ -24,6 +24,4 @@ dist-ssr
 *.sw?
 README.md
 .env
-firebase.js
-constant.js
 
