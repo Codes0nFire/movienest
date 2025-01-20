@@ -23,13 +23,19 @@ const SearchPage = () => {
  
 
  const onClickHandler=async ()=>{
+    const SL=import.meta.env.VITE_SL
+    const SR=import.meta.env.VITE_SR
     const currentInput=inputRef.current.value
     const apiKey = import.meta.env.VITE_GMI_KEY;
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const query="act like movies recommendation system and suggest me only 8 movies seprated by  , and dont write anything else  query=> "+currentInput+"i want the output in this format eg=> House of the Dragon, Game of Thrones , The Lord of the Rings, The Witcher, Vikings"
+    const query=SL+currentInput+SR
     const result = await model.generateContent(query);
     const responseText = await result.response.text();
+    
+    console.log(responseText)
+
+   
     // Array of results 
     const responseArray=responseText.split(",")
     // now fetch movies for each one of them from tmdb
@@ -46,23 +52,23 @@ const SearchPage = () => {
 
 
   return (
- <div className={` pt-[10%]  h-screen w-full ${darkmode ? "bg-black text-white" : "bg-white text-black"}`}>
-<div className='flex justify-center gap-2' >
+ <div className={`pt-[20vh] lg:pt-[10%]  h-screen w-full ${darkmode ? "bg-black text-white" : "bg-white text-black"}`}>
+<div className='flex  gap-2 flex-col lg:flex-row justify-center items-center' >
    <img 
     className='w-12 h-12 rounded-full'
     src="https://i.pinimg.com/736x/4e/77/a8/4e77a8c2b74b4ced590341f6ee62f9e5.jpg" alt="" />
-<form className='flex gap-2' onSubmit={(e)=>e.preventDefault()} >
+<form className='  items-center    w-full lg:w-auto  flex flex-col lg:flex-row gap-2' onSubmit={(e)=>e.preventDefault()} >
     <input type="text" placeholder='what kind of movies would you love to watch? ' 
     ref={inputRef}
-    className={`w-[40vw]  px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
+    className={` w-[100vw] lg:w-[40vw] p-3  lg:px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
     <button 
-      className={`py-2 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
+      className={`lg:duration-300 lg:hover:scale-75 w-[20vw] lg:w-auto  py-3 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
     onClick={onClickHandler}
      >Search </button>
 </form>
 </div>
 
-
+{/* This will show the results  */}
 <SearchResults/>
  
  </div>

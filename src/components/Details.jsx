@@ -7,7 +7,7 @@ import { options } from "../utils/constant";
 import { addmovieImages } from "../utils/moviesSlice";
 import useMovieImages from "../hooks/useMovieImages";
 import ShimmerUI from "./ShimmerUi";
-import ShimmerUIList from "./ShimmerUIList";
+
 
 
 const Details = () => {
@@ -42,36 +42,36 @@ useMovieImages(id)
     <div
       className="relative min-h-screen bg-cover bg-center text-white"
       style={{
-        backgroundImage: `url(${"https://image.tmdb.org/t/p/original" + movie.backdrop_path})`,
+        backgroundImage: `url(${"https://image.tmdb.org/t/p/original" + movie?.backdrop_path})`,
       }}
     >
       {/* Overlay */}
       <div className="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
 
       {/* Content */}
-      <div className="relative  z-10 top-[25vh] left-[-25vw] max-w-4xl mx-auto">
+      <div className="relative p-6 lg:p-0  z-10 lg:top-[25vh] lg:left-[-25vw] max-w-4xl mx-auto">
         {/* Title */}
-        <h1 className="text-5xl font-bold mb-4">{movie.title}</h1>
+        <h1 className="text-5xl font-bold mb-4">{movie.title || "Title"}</h1>
 
         {/* Movie Info */}
         <div className="flex flex-wrap items-center gap-4 mb-6">
           <div className="flex items-center gap-2">
             <FaStar className="text-yellow-500" />
-            <span className="text-lg font-medium">{movie.vote_average} / 10</span>
+            <span className="text-lg font-medium">{movie?.vote_average} / 10</span>
           </div>
           <div className="flex items-center gap-2">
             <FaClock className="text-white" />
-            <span className="text-lg font-medium">{movie.runtime} minutes</span>
+            <span className="text-lg font-medium">{movie?.runtime} minutes</span>
           </div>
           <div className="flex items-center gap-2">
             <FaCalendarAlt className="text-white" />
             <span className="text-lg font-medium">
-              {new Date(movie.release_date).toDateString()}
+              {new Date(movie?.release_date).toDateString()}
             </span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-lg font-medium">Genres:</span>
-            <span>{movie.genres[0].name}</span>
+            <span>{movie?.genres[0]?.name}</span>
           </div>
         </div>
 

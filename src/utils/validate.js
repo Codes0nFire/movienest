@@ -5,6 +5,6 @@ export const isValid=(email,password)=>{
     const isValidPassword=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)
 
     if(!isValidEmail)return "This is not a valid email"
-    if(!isValidPassword)return "Make your password strong "
+    if(!isValidPassword)return "Password must contain lowercase, uppercase, number, and special character. "
     return null;
 }
