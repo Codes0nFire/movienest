@@ -35,8 +35,7 @@ const SearchPage = () => {
    
     // Array of results 
     const responseArray=responseText.split(",")
-    // now fetch movies for each one of them from tmdb
-    // this is an array of pending promises 
+  // this is an array of pending promises 
     const pendingArray=responseArray.map(movie=>fetchcurrentmovie(movie))
     // resolve the pending promises
     const movies = await Promise.all(pendingArray);
@@ -57,9 +56,9 @@ const SearchPage = () => {
 <form className='  items-center    w-full lg:w-auto  flex flex-col lg:flex-row gap-2' onSubmit={(e)=>e.preventDefault()} >
     <input type="text" placeholder='what kind of movies would you love to watch? ' 
     ref={inputRef}
-    className={` w-[100vw] lg:w-[40vw] p-3  lg:px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
+    className={` w-[96vw] lg:w-[40vw] p-3  lg:px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
     <button 
-      className={` w-[20vw] lg:w-auto  py-3 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
+      className={` w-[30vw] lg:w-auto  py-2 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
     onClick={onClickHandler}
      >Search </button>
 </form>

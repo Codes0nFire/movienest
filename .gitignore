@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 README.md
 .env
-
+.firebase
+.firebaserc
+firebase.json

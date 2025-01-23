@@ -9,7 +9,7 @@ const ShimmerUI = () => {
         <div className="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
 
        
-        <div className="relative z-10 p-6 lg:p-0 lg:top-[25vh] lg:left-[-25vw] max-w-4xl mx-auto">
+        <div className="relative z-10 p-6 lg:p-0 lg:top-[15%]  max-w-4xl mx-auto">
         
           <div className="h-10 w-3/4 bg-gray-600 rounded animate-pulse mb-4"></div>
 

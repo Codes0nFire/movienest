@@ -96,7 +96,7 @@ toast.success("Welcome to MoviesNest ✌️",{position: "top-center",})
    <>
    {<Header/>}
    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-900 to-purple-600">
-      <div className="w-full max-w-md p-7 bg-white rounded-lg shadow-lg">
+      <div className=" w-[90vw] md:w-full max-w-md p-7 bg-white rounded-lg shadow-lg">
         <h1 className="text-4xl font-semibold text-center text-purple-800 mb-8">{isLogin ? "SignIn" : "SignUp"}</h1>
         <form onSubmit={(e)=>e.preventDefault()} >
           <div className="mb-6">
@@ -145,7 +145,7 @@ toast.success("Welcome to MoviesNest ✌️",{position: "top-center",})
            {isLogin ? " Sign In" : "Sign up"}
           </button>
         </form>
-        <p onClick={toggleForm} href="" className="text-purple-400 hover:text-purple-600 hover:underline px-12 py-4 cursor-pointer">
+        <p onClick={toggleForm} href="" className="text-purple-400 hover:text-purple-600 hover:underline md:px-12 py-4 cursor-pointer text-center">
           {isLogin ? "Don't have an account? Sign up now" : "Already have an account? Sign In now"}
           </p>
       </div>
