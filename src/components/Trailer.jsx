@@ -24,9 +24,9 @@ useEffect(()=>{getVideo()},[])
 
 
   return (
-    <div className='flex items-center justify-center bg-black' >
+    <div className='flex items-center justify-center bg-black ' >
       <iframe
-  className="object-cover h-screen aspect-video bg-gradient-to-r from-black"
+  className=" w-screen h-screen bg-gradient-to-r from-black"
   src={`https://www.youtube.com/embed/${videokey}?autoplay=1&mute=1&loop=1&si=14WTEuJgyeIFWbSs1`} 
   title="YouTube video player"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
