@@ -10,7 +10,6 @@ const useupcomingMovies = () => {
   const nowPlaying = async () => {
     let blob = await fetch(import.meta.env.VITE_UPCOMINGMOVIES_API, options);
     let data = await blob.json();
-    // console.log(data.results)
     dispatch(addupcomingMovies(data.results));
   };
 

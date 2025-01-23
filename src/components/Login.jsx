@@ -43,7 +43,7 @@ updateProfile(auth.currentUser, {
   // Profile updated!
   const{uid,displayName,email,photoURL}=auth.currentUser
   dispatch(addUser({uid,email,displayName,photoURL}));
-toast.success("Welcome to MoviesNest ✌️",{position: "bottom-right",})
+toast.success("Welcome to MoviesNest ✌️",{position: "top-center",})
 
 }).catch((error) => {
   // An error occurred
@@ -68,7 +68,7 @@ toast.success("Welcome to MoviesNest ✌️",{position: "bottom-right",})
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    toast.success("Welcome Back to MoviesNest 👋",{position: "bottom-right",})
+    toast.success("Welcome Back to MoviesNest 👋",{position: "top-center",})
     // navigate("/browse")
     
   })

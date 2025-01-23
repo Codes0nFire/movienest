@@ -33,11 +33,10 @@ const Header = () => {
         // Sign-out successful.
         dispatch(removeUser());
         // navigate("/");
-        toast.success("Signout successful",{position: "bottom-right",})
+        toast.success("Signout successful",{position: "top-center",})
       })
       .catch((error) => {
         // An error happened.
-        console.log("unable to signout");
       });
     }
       }
@@ -74,7 +73,7 @@ const Header = () => {
       <div className="flex gap-10 lg:gap-6 mt-4 lg:mt-0">
         <button
           onClick={handleSearch}
-          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} flex justify-center items-center gap-1 rounded-md px-4 py-2 text-sm lg:text-base`}
+          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} flex justify-center items-center gap-1 rounded-md p-2 sm:px-4 sm:py-2 text-sm lg:text-base`}
         >
           {isSearchPage ? "Home" : "Search"}
           {!isSearchPage && <FaSearch size={15} />}
@@ -82,14 +81,14 @@ const Header = () => {
 
         <button
           onClick={onClickHandler}
-          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} rounded-md px-4 py-2 text-sm lg:text-base`}
+          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} rounded-md p-2 sm:px-4 sm:py-2 text-sm lg:text-base`}
         >
           Sign Out
         </button>
 
         <button
           onClick={themeChanger}
-          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} flex justify-center items-center gap-1 rounded-md px-4 py-2 text-sm lg:text-base`}
+          className={` ${darkmode ? "bg-white text-black" : "text-white bg-black"} flex justify-center items-center gap-1 rounded-md p-2 sm:px-4 sm:py-2 text-sm lg:text-base`}
         >
           {darkmode ? "Light Mode" : "Dark Mode"}
           {darkmode ? <FaSun className="text-yellow-400" size={20} /> : <FaMoon size={20} />}

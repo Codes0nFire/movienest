@@ -29,12 +29,9 @@ const SearchPage = () => {
     const apiKey = import.meta.env.VITE_GMI_KEY;
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const query=SL+currentInput+SR
+    const query=SL+currentInput+"movies"+SR
     const result = await model.generateContent(query);
     const responseText = await result.response.text();
-    
-    console.log(responseText)
-
    
     // Array of results 
     const responseArray=responseText.split(",")
@@ -62,13 +59,13 @@ const SearchPage = () => {
     ref={inputRef}
     className={` w-[100vw] lg:w-[40vw] p-3  lg:px-4 outline-none rounded-md  ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} />
     <button 
-      className={`lg:duration-300 lg:hover:scale-75 w-[20vw] lg:w-auto  py-3 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
+      className={` w-[20vw] lg:w-auto  py-3 px-4 rounded-md ${darkmode ? "bg-white text-black border-black" : "bg-black text-white border-white"}`} 
     onClick={onClickHandler}
      >Search </button>
 </form>
 </div>
 
-{/* This will show the results  */}
+
 <SearchResults/>
  
  </div>

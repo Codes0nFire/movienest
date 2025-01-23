@@ -12,7 +12,6 @@ const usepopularMovies = () => {
   const nowPlaying = async () => {
     let blob = await fetch(import.meta.env.VITE_POPULARMOVIES_API, options);
     let data = await blob.json();
-    // console.log(data.results)
     dispatch(addpopularMovies(data.results));
   };
 

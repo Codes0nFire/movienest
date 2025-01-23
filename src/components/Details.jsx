@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { options } from "../utils/constant";
 import { addmovieImages } from "../utils/moviesSlice";
 import useMovieImages from "../hooks/useMovieImages";
-import ShimmerUI from "./ShimmerUi";
+import ShimmerUI from "./ShimmerUI";
 
 
 
@@ -49,7 +49,7 @@ useMovieImages(id)
       <div className="bg-black bg-opacity-50 w-full h-full absolute top-0 left-0"></div>
 
       {/* Content */}
-      <div className="relative p-6 lg:p-0  z-10 lg:top-[25vh] lg:left-[-25vw] max-w-4xl mx-auto">
+      <div className="relative pt-[15vh] pl-6 pr-6 lg:p-0  z-10 lg:top-[25vh] lg:left-[-25vw] max-w-4xl mx-auto">
         {/* Title */}
         <h1 className="text-5xl font-bold mb-4">{movie.title || "Title"}</h1>
 

@@ -10,7 +10,6 @@ const NowPlayingMovies = () => {
   const nowPlaying = async () => {
     let blob = await fetch(import.meta.env.VITE_NOWPLAYINGMOVIES_API, options);
     let data = await blob.json();
-    // console.log(data.results)
     dispatch(addNowPlayingMovies(data.results));
   };
 
